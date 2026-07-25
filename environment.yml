@@ -1,0 +1,14 @@
+name: citymaps
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - osmnx>=2.0
+  - networkx>=3.0
+  - geopandas
+  - matplotlib
+  - pandas
+  - numpy
+  - scipy
+  - jupyterlab
+  - pytest
