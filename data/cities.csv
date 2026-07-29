@@ -26,7 +26,7 @@ Prague,"Prague, Czech Republic",Europe,organic
 Berlin,"Mitte, Berlin, Germany",Europe,mixed
 Madrid,"Centro, Madrid, Spain",Europe,organic
 Lisbon,"Lisbon, Portugal",Europe,organic
-Athens,"Athens, Greece",Europe,organic
+Athens,"Athens Municipality, Greece",Europe,organic
 Edinburgh,"Edinburgh, Scotland, UK",Europe,organic
 Dublin,"Dublin, Ireland",Europe,organic
 Copenhagen,"Copenhagen, Denmark",Europe,organic
@@ -43,11 +43,11 @@ Tokyo,"Chiyoda, Tokyo, Japan",Asia,organic
 Kyoto,"Nakagyo Ward, Kyoto, Japan",Asia,planned grid
 Beijing,"Dongcheng, Beijing, China",Asia,planned grid
 Shanghai,"Huangpu, Shanghai, China",Asia,mixed
-Singapore,"Singapore",Asia,mixed
+Singapore,Singapore,Asia,mixed
 Hong Kong,"Central and Western District, Hong Kong",Asia,organic
 Seoul,"Jung-gu, Seoul, South Korea",Asia,mixed
-Mumbai,"Fort, Mumbai, India",Asia,organic
-Delhi,"Chandni Chowk, Delhi, India",Asia,organic
+Mumbai,"Mumbai, Maharashtra, India",Asia,organic
+Delhi,"New Delhi, Delhi, India",Asia,organic
 Bangkok,"Phra Nakhon, Bangkok, Thailand",Asia,organic
 Jaipur,"Jaipur, Rajasthan, India",Asia,planned grid
 Kuala Lumpur,"Kuala Lumpur, Malaysia",Asia,mixed
@@ -56,7 +56,7 @@ Manila,"Manila, Philippines",Asia,mixed
 Hanoi,"Hoan Kiem, Hanoi, Vietnam",Asia,organic
 Taipei,"Zhongzheng, Taipei, Taiwan",Asia,mixed
 Osaka,"Chuo Ward, Osaka, Japan",Asia,mixed
-Chennai,"George Town, Chennai, India",Asia,organic
+Chennai,"Chennai, Tamil Nadu, India",Asia,organic
 Istanbul,"Fatih, Istanbul, Turkey",Asia,organic
 Tel Aviv,"Tel Aviv-Yafo, Israel",Asia,mixed
 Cairo,"Cairo, Egypt",Africa,organic
@@ -71,20 +71,20 @@ Addis Ababa,"Addis Ababa, Ethiopia",Africa,mixed
 Tunis,"Tunis, Tunisia",Africa,organic
 Dakar,"Dakar, Senegal",Africa,mixed
 Kampala,"Kampala, Uganda",Africa,organic
-Abuja,"Abuja, Nigeria",Africa,planned modern
+Abuja,"Abuja Municipal Area Council, Nigeria",Africa,planned modern
 Dar es Salaam,"Dar es Salaam, Tanzania",Africa,mixed
 Algiers,"Algiers, Algeria",Africa,organic
 Buenos Aires,"San Nicolás, Buenos Aires, Argentina",South America,planned grid
 Sao Paulo,"Sé, São Paulo, Brazil",South America,mixed
 Rio de Janeiro,"Centro, Rio de Janeiro, Brazil",South America,organic
-Lima,"Cercado de Lima, Peru",South America,planned grid
-Bogota,"La Candelaria, Bogotá, Colombia",South America,planned grid
+Lima,"Lima District, Peru",South America,planned grid
+Bogota,"Bogotá, Colombia",South America,planned grid
 Santiago,"Santiago, Chile",South America,planned grid
 Quito,"Quito, Ecuador",South America,planned grid
 Montevideo,"Ciudad Vieja, Montevideo, Uruguay",South America,planned grid
 Cusco,"Cusco, Peru",South America,organic
 Caracas,"Libertador, Caracas, Venezuela",South America,mixed
-Brasilia,"Brasília, Federal District, Brazil",South America,planned modern
+Brasilia,"Brasília, Distrito Federal, Brazil",South America,planned modern
 Medellin,"La Candelaria, Medellín, Colombia",South America,mixed
 Sydney,"Sydney, New South Wales, Australia",Oceania,mixed
 Melbourne,"Melbourne, Victoria, Australia",Oceania,planned grid
@@ -94,9 +94,9 @@ Perth,"Perth, Western Australia, Australia",Oceania,mixed
 Auckland,"Auckland, New Zealand",Oceania,mixed
 Wellington,"Wellington, New Zealand",Oceania,organic
 Christchurch,"Christchurch, New Zealand",Oceania,planned grid
-Canberra,"Canberra, Australian Capital Territory, Australia",Oceania,planned modern
-Dubai,"Deira, Dubai, UAE",Asia,mixed
+Canberra,"Canberra, Australia",Oceania,planned modern
+Dubai,"Dubai, United Arab Emirates",Asia,mixed
 Tehran,"District 12, Tehran, Iran",Asia,mixed
-Baghdad,"Al Rusafa, Baghdad, Iraq",Asia,organic
+Baghdad,"Baghdad, Iraq",Asia,organic
 Karachi,"Saddar Town, Karachi, Pakistan",Asia,mixed
-Los Angeles,"Downtown, Los Angeles, California, USA",North America,planned grid
+Los Angeles,"Downtown, Los Angeles, CA, USA",North America,planned grid
