@@ -23,7 +23,7 @@ GRAPH_DIR = OUTPUT_DIR / "graphs"
 FIGURE_DIR = OUTPUT_DIR / "figures"
 LOG_DIR = OUTPUT_DIR / "logs"
 
-CITY_LIST = DATA_DIR / "cities_pilot.csv"
+CITY_LIST = DATA_DIR / "cities.csv"
 
 # --- Extraction Parameters -------------------------------------------------
 
