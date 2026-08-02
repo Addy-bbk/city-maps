@@ -31,7 +31,7 @@ from .pipeline import consolidate, project, reduce_to_simple
 log = logging.getLogger(__name__)
 
 # Radius of the fixed-square area to extract. 
-# Half width of the extracted square 5000m gives a 10km x 10km region, should provide sufficient coverage to capture the central business district and inner suburbs of most cities, 
+# Using a 10km x 10km (5000m x 5000m) area should provide sufficient coverage to capture the central business district and inner suburbs of most cities, 
 # yet allow for timely extraction of all cities in the list. 
 RADIUS_M = 5000
 
@@ -41,7 +41,7 @@ RADIUS_GRAPH_DIR = config.OUTPUT_DIR / "graphs_radius"
 
 
 def geocode_centre(query: str) -> tuple:
-    """Geocode a place name to determine its representative point coordinates (latitude,longitude). Geocoding resolves a place name to a *coordinate*, not a *polygon*. 
+    """Geocode a place name to determine its centroid coordinates (latitude,longitude). Geocoding resolves a place name to a *coordinate*, not a *polygon*. 
     The ability to geocode names without polygons makes this method successful when attempting to geocode names lacking polygons in the database. """
     return ox.geocode(query)
 
@@ -62,7 +62,8 @@ def download_radius(centre: tuple, radius_m: int = RADIUS_M) -> nx.MultiDiGraph:
 
 
 def process_city_radius(name: str, query: str, radius_m: int = RADIUS_M,
-                        output_dir: Path | None = None) -> dict:
+                        output_dir: Path | None = None,
+                        centre: tuple | None = None) -> dict:
     """Process a single city through the fixed-radius extraction process and return the record produced during processing. 
     Stage 2-5 of the boundary-extraction process (project, consolidate, reduce, and export) were copied directly into this fixed-radius process. 
     Thus, the primary distinction between the two data sets occurs at stage 1 where the boundary-extracted process uses an administrative boundary 
@@ -71,8 +72,19 @@ def process_city_radius(name: str, query: str, radius_m: int = RADIUS_M,
     output_dir = Path(output_dir or RADIUS_GRAPH_DIR)
     slug = name.lower().replace(" ", "_").replace(",", "")
 
-    centre = geocode_centre(query)
-    log.info("centre for %s: %.5f, %.5f", name, centre[0], centre[1])
+    # A stored coordinate is preferred over geocoding. The geocoder returns
+    # whichever result its search ranks first, which for some place names is
+    # not the city at all: in one run it placed Cape Town 2,171 km away in the
+    # southern Indian Ocean and Lima 1,014 km up the coast. A coordinate held
+    # in the city list can be checked once against a map and then never
+    # changes, which also makes the dataset reproducible -- a geocoding
+    # service may return a different answer on a different day.
+    if centre is None:
+        centre = geocode_centre(query)
+        source = "geocoded"
+    else:
+        source = "stored"
+    log.info("centre for %s (%s): %.5f, %.5f", name, source, centre[0], centre[1])
 
     raw = download_radius(centre, radius_m)
     raw_nodes = raw.number_of_nodes()
@@ -88,6 +100,7 @@ def process_city_radius(name: str, query: str, radius_m: int = RADIUS_M,
     return {
         "city": name,
         "query": query,
+        "centre_source": source,
         "centre_lat": round(centre[0], 5),
         "centre_lon": round(centre[1], 5),
         "radius_m": radius_m,

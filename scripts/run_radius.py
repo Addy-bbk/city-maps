@@ -37,7 +37,7 @@ FAILURES = config.LOG_DIR / "failures_radius.csv"
 
 RESULT_FIELDS = [
     "city", "query", "region", "morphology",
-    "centre_lat", "centre_lon", "radius_m", "crs",
+    "centre_source", "centre_lat", "centre_lon", "radius_m", "crs",
     "raw_nodes", "final_nodes", "final_edges", "reduction_pct",
     "n_nodes", "n_edges", "mean_degree", "edge_node_ratio",
     "connected", "n_components", "n_self_loops", "n_isolated",
@@ -98,7 +98,13 @@ def main() -> int:
         name, query = city["name"], city["query"]
         log.info("[%d/%d] %s", i, len(todo), name)
         try:
-            rec = pipeline_radius.process_city_radius(name, query, args.radius)
+            # Use the coordinate stored in the city list when one is present,
+            # falling back to geocoding only for rows that lack it.
+            centre = None
+            if city.get("lat") and city.get("lon"):
+                centre = (float(city["lat"]), float(city["lon"]))
+            rec = pipeline_radius.process_city_radius(
+                name, query, args.radius, centre=centre)
             G = read_graph(config.PROJECT_ROOT / rec["file"])
             rec.update(validate.validate(G))
             rec["region"] = city.get("region", "")
